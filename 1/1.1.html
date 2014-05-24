@@ -1,0 +1,48 @@
+<!Doctype html>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		//1.1 实现一个算法来判断一个字符串中的字符是否唯一(即没有重复).不能使用额外的数据结构。 (即只使用基本的数据结构)
+		Array.prototype.isUnique = function(){
+			var arr = this;
+			var obj = {};
+			for(var i = 0, len = arr.length; i < len ; i++){
+				if(obj[arr[i]]){
+					return false;
+				}else{
+					obj[arr[i]] = true;
+				}
+			}
+			return true;
+		}
+
+		//但是上面的算法没有考虑js语言的特殊情况。在js语言中，有类似New Number(1)这样的数据，而且数组可以存储对象。
+		Array.prototype.isUniqueJs = function(){
+			var arr = this;
+			var obj = {};
+			for(var i = 0, len = arr.length; i < len ; i++){
+				var type = typeof arr[i];
+				if(type != 'object'){
+					//js中默认只有指向同一个目标的对象才是相等的
+					if(obj[type + arr[i]]){
+						return false;
+					}else{
+						obj[type + arr[i]] = true;
+					}
+				}
+			}
+			return true;
+		}
+
+		/*
+		但是可能会存在如下情况：
+			var a = {a:1};
+			var b = a;
+			var c = [1,2,3,a,b];
+		这种情况下a和b其实是重复的，如果要考虑这种情况实在是太复杂了。
+		*/
+	</script>
+</body>
+</html>

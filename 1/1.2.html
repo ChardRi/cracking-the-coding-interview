@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		//1.2 写代码翻转一个C风格的字符串。(C风格的意思是"abcd"需要用5个字符来表示，包含末尾的结束字符)
+
+		String.prototype.reverseC = function(){
+			var str = this,
+					len = str.length,
+					result = '',
+					i = len-1;
+	    while(i >= 0){
+	    	result += str.charAt(i);
+	    	i--;
+	    }
+	    return result;
+		}
+
+	</script>
+</body>
+</html>
