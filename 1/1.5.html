@@ -1,0 +1,25 @@
+<!Doctype html>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		//1.5 写一个函数，把字符串中所有的空格替换为%20。
+
+		String.prototype.replaceblankTo20 = function(){
+			var str = this;
+			var result = '';
+			for(var i = 0,len = str.length;i < len;i++){
+				var item = str.charAt(i);
+				if(item == ' '){
+					result += '%20';
+				}else{
+					result += item;
+				}
+			}
+			return result;
+		}
+
+	</script>
+</body>
+</html>

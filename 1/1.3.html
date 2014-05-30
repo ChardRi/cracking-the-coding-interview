@@ -10,15 +10,33 @@
 		String.prototype.removeRepeat = function(){
 			var str = this;
 			var p = 0,
-					result = '';
-					console.log(str);
-			for(var i = 0, len = str.length; i < len; i++){
+					result = '',
+					len = str.length;
+			if(len < 2) return str;
+			for(var i = 0; i < len; i++){
 				var item = str.charAt(i);
 				if(item != undefined){
 					result += item;
 					var reg = new RegExp(item,'g');
 					str = item + str.replace(reg,'');
 				}
+			}
+			return result;
+		}
+
+		//如果可以开一个固定大小，与问题规模(即字符串长度)无关的对象，那么可以用一个对象来 表征每个字符的出现，这样的话只需要遍历一遍字符串即可，时间复杂度O(n)。
+		String.prototype.removeRepeatN = function(){
+			var str = this;
+			var result = '',
+				obj = {},
+				len = str.length;
+			if(len < 2) return str;
+			for(var i = 0; i < len; i++){
+				var item = str.charAt(i);
+				if(!obj[item]){
+					obj[item] = 1
+					result += item
+				}				
 			}
 			return result;
 		}
